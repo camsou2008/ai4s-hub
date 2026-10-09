@@ -11,13 +11,13 @@
   var LINK_ICON = 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71';
 
   var CSS = [
-    '.ai4s-sharebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0 6px;padding-top:16px;border-top:1px solid var(--ink-line)}',
-    '.ai4s-share-label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:rgba(226,236,235,.5);margin-right:4px}',
-    '.ai4s-share-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border-radius:999px;border:1px solid var(--ink-line);background:rgba(255,255,255,.04);color:#e6efee;font-size:13px;font-family:var(--body);cursor:pointer;transition:all .18s ease;line-height:1.4}',
+    '.ai4s-sharebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0 6px;padding-top:18px;border-top:1px solid var(--rule)}',
+    '.ai4s-share-label{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--muted);margin-right:4px}',
+    '.ai4s-share-btn{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border-radius:999px;border:1px solid var(--rule);background:#fff;color:var(--text);font-size:13px;font-family:var(--body);cursor:pointer;transition:all .18s ease;line-height:1.4}',
     '.ai4s-share-btn svg{width:14px;height:14px;fill:currentColor;flex:none}',
     '.ai4s-share-btn svg.stroke{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}',
-    '.ai4s-share-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.1);border-color:rgba(226,236,235,.35)}',
-    '.ai4s-share-btn.ai4s-x:hover{background:#fff;border-color:#fff;color:#000}',
+    '.ai4s-share-btn:hover{transform:translateY(-1px);border-color:#b9c4c0;box-shadow:0 4px 14px rgba(11,31,42,.08)}',
+    '.ai4s-share-btn.ai4s-x:hover{background:#000;border-color:#000;color:#fff}',
     '.ai4s-share-btn.ai4s-wx:hover{background:#07c160;border-color:#07c160;color:#fff}',
     '.ai4s-share-btn:active{transform:translateY(0)}',
     '.ai4s-wxmask{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(4,12,16,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .22s ease}',
