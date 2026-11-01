@@ -1,0 +1,53 @@
+# 小凤 ClashX Meta 配置 v7（精简版：只保留两个节点）
+# 1) 小凤-Hysteria2：公网 UDP 直连 ai46.bestsi.org:443（当前被封，留作恢复后可用）
+# 2) 小凤-经小美：公网 UDP 到小美 107.172.23.185:53443 中继 -> Tailscale 内网 -> 小凤（当前可用）
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+
+proxies:
+  - name: "小凤-Hysteria2"
+    type: hysteria2
+    server: ai46.bestsi.org
+    port: 443
+    password: "Da8vLmvum3bSzMysyItKhR2AoIYdbWrrIWBbZs8U"
+    sni: ai46.bestsi.org
+    skip-cert-verify: false
+
+  - name: "小凤-经小美"
+    type: hysteria2
+    server: 107.172.23.185
+    port: 53443
+    password: "Da8vLmvum3bSzMysyItKhR2AoIYdbWrrIWBbZs8U"
+    sni: ai46.bestsi.org
+    skip-cert-verify: false
+
+proxy-groups:
+  - name: "小凤节点"
+    type: select
+    proxies:
+      - "小凤-Hysteria2"
+      - "小凤-经小美"
+
+rules:
+  # Tailscale 内网直连（必须保留，否则开代理会断内网）
+  - DOMAIN-SUFFIX,ts.net,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT,no-resolve
+  - DST-PORT,41641,DIRECT
+  # 局域网直连
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  - IP-CIDR,10.0.0.0/8,DIRECT,no-resolve
+  - IP-CIDR,172.16.0.0/12,DIRECT,no-resolve
+  # 国内直连，其余走代理
+  - GEOIP,CN,DIRECT
+  - MATCH,小凤节点
